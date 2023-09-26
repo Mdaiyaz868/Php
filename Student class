@@ -1,0 +1,62 @@
+Question Description: You are tasked with creating a PHP class called Student to represent information about a student. The Student class should have the following attributes and methods: Attributes:
+ • firstName (string) - The first name of the student.
+ • lastName (string) - The last name of the student.
+ • age (int) - The age of the student.
+ • email (string) - The email address of the student. Methods: 
+ • __construct() - A constructor method that takes parameters for firstName, lastName, age, and email and initializes the corresponding attributes.
+ • getFullName() - A method that returns the full name of the student (e.g., "John Doe").
+ • isTeenager() - A method that returns true if the student's age is between 13 and 19 (inclusive), indicating that the student is a teenager.
+ • sendEmail($subject, $message) - A method that simulates sending an email to the student. It should take two parameters: $subject (string) and $message (string). 
+This method should display a message like "Email sent to [student's email] with subject: [subject]" 
+where [student's email] and [subject] are placeholders for the actual email address and subject. Instructions:
+ • Create the Student class with the specified attributes and methods.
+ • Test your Student class by creating several Student objects and demonstrating the use of its methods. 
+ • Ensure that the methods are working correctly and that the class follows good OOP practices.
+Code:
+<?php
+class Student {
+    private $firstName;
+    private $lastName;
+    private $age;
+    private $email;
+    public function __construct($firstName, $lastName, $age, $email) {
+        $this->firstName = $firstName;
+        $this->lastName = $lastName;
+        $this->age = $age;
+        $this->email = $email;
+    }
+    public function getFullName() {
+        return $this->firstName . ' ' . $this->lastName;
+    }
+    public function isTeenager() {
+        return ($this->age >= 13 && $this->age <= 19);
+    }
+    public function sendEmail($subject, $message) {
+        echo "Email sent to {$this->email} with subject: $subject\n";
+    }
+}
+$firstName = readline("Enter first name: ");
+$lastName = readline("Enter last name: ");
+$age = intval(readline("Enter age: "));
+$email = readline("Enter email: ");
+$student1 = new Student($firstName, $lastName, $age, $email);
+echo $student1->getFullName();
+if ($student1->isTeenager()) {
+    echo " This student is a teenager.\n";
+} else {
+    echo " This student is not a teenager.\n";
+}
+$subject = readline("Enter email subject: ");
+$message = readline("Enter email message: ");
+$student1->sendEmail($subject, $message);
+?>
+
+Output:
+Enter first name:Md
+Enter last name: Aiyaz
+Enter age: 25
+Enter email: mdaiyaz09@gmail.com
+Md Aiyaz This student is not a teenager.
+Enteremail subject: CA Exam
+Enter emails message: Pass
+Email sent to mdaiyaz09@gmail.com with subject: CA Exam
