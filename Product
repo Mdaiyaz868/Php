@@ -1,0 +1,62 @@
+Question Description: Create a PHP class for a "Product" with the following attributes and methods:
+ Attributes: • Name: The name of the product (string).
+ • Price: The price of the product (float). 
+ • Quantity: The quantity of the product in stock (integer). Methods:
+ • __construct(): A constructor method that initializes the product with a name, price, and quantity.
+ • getInfo(): A method that returns a string containing the product's name, price, and quantity in the format: "Product: [Name], Price: $[Price], Quantity: [Quantity]".
+ • buy(): A method that allows purchasing a certain quantity of the product. It should decrease the quantity in stock by the specified amount. 
+ • restock(): A method that allows adding a certain quantity of the product to the stock. It should increase the quantity in stock by the specified amount.
+ Note: You should also include appropriate data validation, such as ensuring that the price and quantity are non-negative numbers.
+ //Driver Code $product = new Product("Widget", 19.99, 100); 
+// Output: "Product: Widget, Price: $19.99, Quantity: 100" echo $product->getInfo(); $product->buy(20);
+// Output: "Product: Widget, Price: $19.99, Quantity: 80" echo $product->getInfo(); $product->restock(50);
+// Output: "Product: Widget, Price: $19.99, Quantity: 130" echo $product->getInfo();
+Code
+<?php
+class Product {
+    private $name;
+    private $price;
+    private $quantity;
+
+    public function __construct($name, $price, $quantity) {
+        $this->name = $name;
+        $this->price = max(0, $price);
+        $this->quantity = max(0, $quantity);
+    }
+    public function getInfo() {
+        return "Product: {$this->name}, Price: \$ {$this->price}, Quantity: {$this->quantity}";
+    }
+    public function buy($amount) {
+        if ($amount > 0 && $amount <= $this->quantity) {
+            $this->quantity -= $amount;
+        }
+    }
+    public function restock($amount) {
+        if ($amount > 0) {
+            $this->quantity += $amount;
+        }
+    }
+}
+$name = readline("Enter product name: ");
+$price = floatval(readline("Enter product price: "));
+$quantity = intval(readline("Enter product quantity: "));
+$product = new Product($name, $price, $quantity);
+echo $product->getInfo();
+$buyAmount = intval(readline("\n Enter quantity to buy:  "));
+$product->buy($buyAmount);
+echo $product->getInfo();
+$restockAmount = intval(readline("\n Enter quantity to restock: "));
+$product->restock($restockAmount);
+echo $product->getInfo();
+?>
+
+Output:
+Enter product name: Aiyaz
+Enter product price: 456
+Enter product quantity: 45
+Product: Aiyaz, Price: $ 456, $ Quantity: 45 Enter quantity to buy:23
+Product: Aiyaz, Price: $ 456, $ Quantity: 22 Enter quantity to restock:8
+Product: Aiyaz, Price: $ 456, $ Quantity: 30
+
+ 
+ 
