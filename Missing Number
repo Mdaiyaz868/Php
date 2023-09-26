@@ -1,0 +1,39 @@
+Find the Missing Number: 
+Write a PHP function ‘findMissingNumber()’ that takes two arrays as input: '$arr1' and '$arr2'. 
+The first array, '$arr1', contains 'n' distinct numbers from 1 to 'n + 1', where 'n' is the length of the array. 
+The second array, '$arr2', contains 'n' distinct numbers from 1 to 'n'. 
+Your task is to find and return the missing number that is present in '$arr1' but not in '$arr2'.
+ Here is the function signature you should implement: 
+function findMissingNumber($arr1, $arr2)
+ {
+ // Your code goes here. 
+}
+ $arr1 = [11, 12, 33, 44, 65, 16, 18]; 
+$arr2 = [11, 12, 33, 44, 65, 18];
+ $missingNumber = findMissingNumber($arr1, $arr2);
+ echo $missingNumber;
+
+Code:
+<?php
+function findMissingNumber($arr1, $arr2) {
+    //remove duplicate array
+  $arr2_set = array_unique($arr2);
+  for ($i = 0; $i < count($arr1); $i++) {
+    // number check persent or not
+    // not in set 2 return the function 
+    if (!in_array($arr1[$i], $arr2_set)) {
+      return $arr1[$i];
+    }
+  }
+  // if number is same value return total index number +1 
+  return count($arr1) + 1;
+}
+$arr1 = [11, 12, 33, 44, 65, 16, 18];
+$arr2 = [11, 12, 33, 44, 65, 18];
+$missingNumber = findMissingNumber($arr1, $arr2);
+echo $missingNumber;
+?>
+
+Output:
+
+16
