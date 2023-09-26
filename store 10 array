@@ -1,0 +1,63 @@
+Write a PHP program to create an array and store 10 names in the array. Do the following operations.
+ • Display the contents using for each statement.
+ • Display the array in a sorted order.
+ • Display the array without the duplicate elements 
+• Remove the last element and display
+ • Display the array in reverse order
+ • Search an element in the given array
+Code:
+
+<?php
+//  array of 10 names
+$names = ["Md Aiyaz", "Ashish", "Ritik", "Ashok", "Kavita", "Aarohi", "Vivab", "Jintu", "Md Aquib", "Nitin"];
+// Display the contents
+echo "The contents of the array using for each statement:";
+foreach ($names as $name) {
+  echo $name . " ";
+}
+echo "\n";
+// Display array in a sort order
+echo "The array in sorted order:";
+sort($names);
+foreach ($names as $name) {
+  echo $name . " ";
+}
+echo "\n";
+//  without the duplicate elements
+echo "The array without duplicate elements:";
+$uniqueNames = array_unique($names);
+foreach ($uniqueNames as $name) {
+  echo $name . " ";
+}
+echo "\n";
+// Remove the last element
+echo "The array after removing the last element:";
+array_pop($names);
+foreach ($names as $name) {
+  echo $name . " ";
+}
+echo "\n";
+//  reverse order
+echo "The array in reverse order:";
+for ($i = count($names) - 1; $i >= 0; $i--) {
+  echo $names[$i] . " ";
+}
+echo "\n";
+// Search an element 
+echo "Enter the name to search: ";
+$name = trim(fgets(STDIN));
+if (in_array($name, $names)) {
+  echo "The name $name is found in the array.";
+} else {
+  echo "The name $name is not found in the array.";
+}
+?>
+
+Output:
+
+The contents of the array using for each statement:Md Aiyaz Ashish Ritik Ashok Kavita Aarohi Vivab Jintu Md Aquib Nitin 
+The array in sorted order:Aarohi Ashish Ashok Jintu Kavita Md Aiyaz Md Aquib Nitin Ritik Vivab 
+The array without duplicate elements:Aarohi Ashish Ashok Jintu Kavita Md Aiyaz Md Aquib Nitin Ritik Vivab 
+The array after removing the last element:Aarohi Ashish Ashok Jintu Kavita Md Aiyaz Md Aquib Nitin Ritik 
+The array in reverse order:Ritik Nitin Md Aquib Md Aiyaz Kavita Jintu Ashok Ashish Aarohi 
+Enter the name to search: 
