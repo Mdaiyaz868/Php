@@ -1,0 +1,69 @@
+You are given an array of integers called '$numbers'. Write a PHP program to perform the following tasks:
+ 1. Calculate the sum of all the numbers in the array and store it in a variable called '$sum'. 
+ 2. Find the maximum value in the array and store it in a variable called '$max'. 
+ 3. Find the minimum value in the array and store it in a variable called '$min'.
+ 4. Calculate the average (mean) of all the numbers in the array and store it in a variable called '$average'. Round the average to two decimal places. 
+ 5. Create a new array called `$evenNumbers` that contains only the even numbers from the original array '$numbers'.
+ 6. Create a new array called `$oddNumbers` that contains only the odd numbers from the original array '$numbers'. Finally, print the values of '$sum', '$max', '$min', '$average', '$evenNumbers', and '$oddNumbers'. 
+Code:
+<?php
+// user for take input  
+echo "Enter the numbers with a comma: ";
+$numbers = explode(",", trim(fgets(STDIN)));
+$sum = 0;
+foreach ($numbers as $number) {
+  $sum += $number;
+}
+
+// Maximun number find
+$max = $numbers[0];
+foreach ($numbers as $number) {
+  if ($number > $max) {
+    $max = $number;
+  }
+}
+ // minimum number find
+$min = $numbers[0];
+foreach ($numbers as $number) {
+  if ($number < $min) {
+    $min = $number;
+  }
+}
+
+//  average find
+$average = $sum / count($numbers);
+$average = round($average, 2);
+
+//  even numbers array find 
+$evenNumbers = [];
+foreach ($numbers as $number) {
+  if ($number % 2 == 0) {
+    $evenNumbers[] = $number;
+  }
+}
+
+//  odd numbers array find 
+$oddNumbers = [];
+foreach ($numbers as $number) {
+  if ($number % 2 != 0) {
+    $oddNumbers[] = $number;
+  }
+}
+
+//print result
+echo "The sum of the numbers is: $sum\n";
+echo "The maximum number is: $max\n";
+echo "The minimum number is: $min\n";
+echo "The average is: $average\n";
+echo "The even numbers are: " . implode(", ", $evenNumbers) . "\n";
+echo "The odd numbers are: " . implode(", ", $oddNumbers) . "\n";
+?>
+
+Output:
+Enter the numbers with a comma: 1,2,3,4,5
+The sum of the numbers is: 15
+The maximum number is: 5
+The minimum number is: 1
+The average is: 3
+The even numbers are: 2, 4
+The odd numbers are: 1, 3, 5
