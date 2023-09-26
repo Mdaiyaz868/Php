@@ -1,0 +1,23 @@
+You need to write a PHP program by using OOPs concepts to check if a person is eligible to vote or not. Condition: 
+ • Minimum age required for vote is 18. ( take it as data member of the class)
+ • You can use PHP Functions. ( Create a PHP function for the logic) 
+ • You can use Decision Making Statements. ( control statement)
+Code:
+<?php
+class Voter {
+    public $min_age = 18;
+    public function isEligibleToVote($age) {
+        return $age >= $this->min_age;
+    }
+}
+$voter = new Voter();
+$age = 19;
+if ($voter->isEligibleToVote($age)) {
+    echo "You are eligible to vote.";
+} else {
+    echo "You are not eligible to vote.";
+}
+?>
+
+Output:
+You are eligible to vote.
